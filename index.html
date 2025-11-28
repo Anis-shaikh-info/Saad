@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saad Computers LLC - Premium IT Solutions & Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%233498db" opacity="0.1"><polygon points="0,0 1000,50 1000,100 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+        
+        .secondary-button:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .product-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .product-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .business-verification {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .verification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .verification-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .verification-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .verification-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-form, .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        .submit-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item p {
+            color: #666;
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .chat-widget:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+        
+        .chat-send {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 1rem;
+            cursor: pointer;
+        }
+        
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .cart-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            padding: 2rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #999;
+        }
+        
+        .cart-items {
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .cart-item-details h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            background: #f1f1f1;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .payment-section {
+            margin-top: 2rem;
+        }
+        
+        #payment-form {
+            margin-top: 1rem;
+        }
+        
+        .square-input {
+            height: 56px;
+            border: 1px solid #e0e2e3;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            padding: 16px;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        #card-container {
+            margin-bottom: 16px;
+            border: 1px solid #e0e2e3;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        
+        #payment-status-container {
+            margin-top: 16px;
+            text-align: center;
+        }
+        
+        .payment-success {
+            color: var(--success);
+        }
+        
+        .payment-error {
+            color: var(--accent);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-container {
+                width: 90%;
+                right: 5%;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Saad <span>Computers</span> LLC</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Premium IT Solutions & Computer Products</h2>
+            <p>Saad Computers LLC provides high-quality computer hardware, IT services, and technical support for businesses and individuals.</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+            <a href="#services" class="cta-button secondary-button">Our Services</a>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Laptop" class="product-image">
+                    <div class="product-info">
+                        <h4>Dell Latitude Business Laptop</h4>
+                        <p class="product-description">Intel Core i7, 16GB RAM, 512GB SSD, 14" FHD Display. Perfect for business professionals.</p>
+                        <p class="product-price">$800 USD</p>
+                        <button class="product-button add-to-cart" data-id="1" data-name="Dell Latitude Business Laptop" data-price="800" data-image="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Gaming Desktop" class="product-image">
+                    <div class="product-info">
+                        <h4>High-Performance Gaming Desktop</h4>
+                        <p class="product-description">AMD Ryzen 7, 32GB RAM, 1TB SSD, NVIDIA RTX 4070. Ultimate gaming experience.</p>
+                        <p class="product-price">$1,200 USD</p>
+                        <button class="product-button add-to-cart" data-id="2" data-name="High-Performance Gaming Desktop" data-price="1200" data-image="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1626218174358-7769486c4b79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Graphics Card" class="product-image">
+                    <div class="product-info">
+                        <h4>NVIDIA GeForce RTX 4070</h4>
+                        <p class="product-description">12GB GDDR6X, DLSS 3, Ray Tracing. Next-generation graphics performance.</p>
+                        <p class="product-price">$600 USD</p>
+                        <button class="product-button add-to-cart" data-id="3" data-name="NVIDIA GeForce RTX 4070" data-price="600" data-image="https://images.unsplash.com/photo-1626218174358-7769486c4b79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Gaming Mouse" class="product-image">
+                    <div class="product-info">
+                        <h4>RGB Gaming Mouse</h4>
+                        <p class="product-description">16000 DPI, 8 Programmable Buttons, RGB Lighting. Precision gaming mouse.</p>
+                        <p class="product-price">$50 USD</p>
+                        <button class="product-button add-to-cart" data-id="4" data-name="RGB Gaming Mouse" data-price="50" data-image="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mechanical Keyboard" class="product-image">
+                    <div class="product-info">
+                        <h4>Mechanical Gaming Keyboard</h4>
+                        <p class="product-description">RGB Backlit, Mechanical Switches, N-Key Rollover. Ultimate typing experience.</p>
+                        <p class="product-price">$100 USD</p>
+                        <button class="product-button add-to-cart" data-id="5" data-name="Mechanical Gaming Keyboard" data-price="100" data-image="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Monitor" class="product-image">
+                    <div class="product-info">
+                        <h4>27" 4K Gaming Monitor</h4>
+                        <p class="product-description">4K UHD, 144Hz, 1ms Response Time, HDR. Immersive gaming and productivity.</p>
+                        <p class="product-price">$450 USD</p>
+                        <button class="product-button add-to-cart" data-id="6" data-name="27\" 4K Gaming Monitor" data-price="450" data-image="https://images.unsplash.com/photo-1597872200969-2b65d56bd112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Our IT Services</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>Computer Repair & Maintenance</h4>
+                        <p class="product-description">Fast and reliable repair services for all computer hardware and software issues. We diagnose and fix problems quickly to minimize downtime.</p>
+                        <p class="product-price">Starting at $50 USD</p>
+                        <button class="product-button">Schedule Service</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>IT Support & Consulting</h4>
+                        <p class="product-description">Professional IT support services for businesses of all sizes. We provide ongoing maintenance, troubleshooting, and strategic IT planning.</p>
+                        <p class="product-price">Custom Pricing</p>
+                        <button class="product-button">Get Quote</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <h4>Network Setup & Security</h4>
+                        <p class="product-description">Comprehensive network solutions including setup, configuration, and security. Protect your business from cyber threats with our expertise.</p>
+                        <p class="product-price">Starting at $200 USD</p>
+                        <button class="product-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Saad Computers LLC</h2>
+            <div class="about-content">
+                <p>Saad Computers LLC is a registered IT services company based in New Jersey, providing comprehensive technology solutions to businesses and individuals. Our team of certified professionals is dedicated to delivering exceptional service and support.</p>
+                
+                <div class="business-verification">
+                    <h3>Business Verification</h3>
+                    <div class="verification-grid">
+                        <div class="verification-item">
+                            <h4>Legal Name <span class="status-badge">Verified</span></h4>
+                            <p>Saad Computers LLC</p>
+                        </div>
+                        <div class="verification-item">
+                            <h4>EIN <span class="status-badge">Verified</span></h4>
+                            <p>37-2181133</p>
+                        </div>
+                        <div class="verification-item">
+                            <h4>Formation Date</h4>
+                            <p>April 30, 2025</p>
+                        </div>
+                        <div class="verification-item">
+                            <h4>Registered Agent</h4>
+                            <p>Registered Agents Inc</p>
+                        </div>
+                        <div class="verification-item">
+                            <h4>Business Address</h4>
+                            <p>971 US Highway 202N STE R, Branchburg, NJ 08876</p>
+                        </div>
+                        <div class="verification-item">
+                            <h4>Owner</h4>
+                            <p>Meheboob Javed Sayyed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="repair">Computer Repair</option>
+                                <option value="support">IT Support</option>
+                                <option value="security">Network Security</option>
+                                <option value="consultation">IT Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <h4>Business Address</h4>
+                        <p>971 US Highway 202N STE R<br>Branchburg, NJ 08876</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p>info@saadcomputers.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.015632053771!2d-74.7028232240461!3d40.64413807141016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c39d59c5c5b5c5%3A0x5b1b5b5b5b5b5b5b!2s971%20US-202%2C%20Branchburg%2C%20NJ%2008876!5e0!3m2!1sen!2sus!4v1648762345678!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Saad Computers LLC</h3>
+                <p>Your trusted partner for IT solutions and computer services in New Jersey and beyond.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>971 US Highway 202N STE R</p>
+                <p>Branchburg, NJ 08876</p>
+                <p>+1 (555) 123-4567</p>
+                <p>info@saadcomputers.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Business Details</h3>
+                <p>EIN: 37-2181133</p>
+                <p>Formed: April 30, 2025</p>
+                <p>Registered in New Jersey</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Saad Computers LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Shopping Cart</h3>
+                <div class="cart-close" id="cartClose">&times;</div>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+                <div class="empty-cart" id="emptyCart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div class="cart-total" id="cartTotalSection" style="display: none;">
+                <span>Total:</span>
+                <span id="cartTotal">$0 USD</span>
+            </div>
+            
+            <div class="payment-section" id="paymentSection" style="display: none;">
+                <h4>Payment Information</h4>
+                <div id="payment-form">
+                    <div id="card-container"></div>
+                    <button id="card-button" type="button" class="product-button" style="width: 100%;">Pay Now</button>
+                    <div id="payment-status-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-widget" id="chatToggle">💬</div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>IT Support Chat</h3>
+            <div class="chat-close" id="chatClose">×</div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                Hello! How can we help you with your IT needs today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button class="chat-send" id="chatSend">Send</button>
+        </div>
+    </div>
+
+    <!-- Square Web Payments SDK -->
+    <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const cartClose = document.getElementById('cartClose');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.getElementById('cartCount');
+        const emptyCart = document.getElementById('emptyCart');
+        const cartTotalSection = document.getElementById('cartTotalSection');
+        const paymentSection = document.getElementById('paymentSection');
+        
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                const image = this.getAttribute('data-image');
+                
+                addToCart(id, name, price, image);
+            });
+        });
+        
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${name} added to cart!`);
+        }
+        
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            let count = 0;
+            
+            if (cart.length === 0) {
+                cartItems.appendChild(emptyCart);
+                cartTotalSection.style.display = 'none';
+                paymentSection.style.display = 'none';
+            } else {
+                emptyCart.style.display = 'none';
+                cartTotalSection.style.display = 'flex';
+                paymentSection.style.display = 'block';
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    count += item.quantity;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <h4>${item.name}</h4>
+                                <p class="cart-item-price">$${item.price} USD</p>
+                            </div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+                
+                cartTotal.textContent = `$${total} USD`;
+            }
+            
+            cartCount.textContent = count;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    decreaseQuantity(id);
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    increaseQuantity(id);
+                });
+            });
+        }
+        
+        function decreaseQuantity(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity -= 1;
+                if (item.quantity === 0) {
+                    cart = cart.filter(item => item.id !== id);
+                }
+                updateCart();
+            }
+        }
+        
+        function increaseQuantity(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+            }
+        }
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background-color: var(--success);
+                color: white;
+                padding: 1rem;
+                border-radius: 5px;
+                z-index: 3000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        }
+        
+        // Cart modal functionality
+        cartIcon.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+        });
+        
+        cartClose.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+        
+        // Close cart modal when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+        
+        // Chat functionality
+        document.getElementById('chatToggle').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'flex';
+        });
+        
+        document.getElementById('chatClose').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'none';
+        });
+        
+        document.getElementById('chatSend').addEventListener('click', function() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = message;
+                document.getElementById('chatMessages').appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Scroll to bottom
+                document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+                
+                // Simulate bot response after a delay
+                setTimeout(function() {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot';
+                    botMessage.textContent = "Thank you for your message. Our IT support team will get back to you shortly. For urgent issues, please call us at (555) 123-4567.";
+                    document.getElementById('chatMessages').appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+                }, 1000);
+            }
+        });
+        
+        // Allow sending message with Enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('chatSend').click();
+            }
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', formData);
+            alert('Thank you for your message! We will get back to you soon.');
+            document.getElementById('contactForm').reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Square Payment Integration
+        // Initialize Square Payments
+        async function initializeSquarePayment() {
+            // Replace with your Square Application ID and Location ID
+            const payments = Square.payments('YOUR_SANDBOX_APPLICATION_ID', 'YOUR_SANDBOX_LOCATION_ID');
+            
+            try {
+                const card = await payments.card();
+                await card.attach('#card-container');
+                
+                const cardButton = document.getElementById('card-button');
+                cardButton.addEventListener('click', async () => {
+                    if (cart.length === 0) {
+                        alert('Your cart is empty!');
+                        return;
+                    }
+                    
+                    const statusContainer = document.getElementById('payment-status-container');
+                    const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                    
+                    try {
+                        const result = await card.tokenize();
+                        if (result.status === 'OK') {
+                            // Here you would typically send the token to your server
+                            console.log(`Payment token is ${result.token}`);
+                            console.log(`Total amount: $${totalAmount} USD`);
+                            
+                            statusContainer.innerHTML = '<p class="payment-success">Payment successful! Thank you for your purchase.</p>';
+                            
+                            // Clear cart after successful payment
+                            cart = [];
+                            updateCart();
+                            
+                            // Close cart modal after 3 seconds
+                            setTimeout(() => {
+                                cartModal.style.display = 'none';
+                                statusContainer.innerHTML = '';
+                            }, 3000);
+                        } else {
+                            statusContainer.innerHTML = '<p class="payment-error">Payment failed. Please try again.</p>';
+                            console.log('Payment failed');
+                        }
+                    } catch (e) {
+                        statusContainer.innerHTML = '<p class="payment-error">Payment failed. Please try again.</p>';
+                        console.error(e);
+                    }
+                });
+            } catch (e) {
+                console.error('Initialization error', e);
+            }
+        }
+        
+        // Initialize Square payment when the page loads
+        document.addEventListener('DOMContentLoaded', initializeSquarePayment);
+    </script>
+</body>
+</html>
