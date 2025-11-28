@@ -670,6 +670,7 @@
             border: 1px solid #e0e2e3;
             border-radius: 6px;
             padding: 10px;
+            min-height: 56px;
         }
         
         #payment-status-container {
@@ -695,6 +696,45 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             color: #ddd;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
         }
         
         @media (max-width: 768px) {
@@ -805,12 +845,30 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Monitor" class="product-image">
+                    <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Gaming Monitor" class="product-image">
                     <div class="product-info">
                         <h4>27" 4K Gaming Monitor</h4>
                         <p class="product-description">4K UHD, 144Hz, 1ms Response Time, HDR. Immersive gaming and productivity.</p>
                         <p class="product-price">$450 USD</p>
                         <button class="product-button add-to-cart" data-id="6" data-name="27\" 4K Gaming Monitor" data-price="450" data-image="https://images.unsplash.com/photo-1597872200969-2b65d56bd112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ultrawide Gaming Monitor" class="product-image">
+                    <div class="product-info">
+                        <h4>34" Ultrawide Gaming Monitor</h4>
+                        <p class="product-description">3440x1440 Resolution, 144Hz, Curved Display, HDR. Immersive gaming experience.</p>
+                        <p class="product-price">$750 USD</p>
+                        <button class="product-button add-to-cart" data-id="7" data-name="34\" Ultrawide Gaming Monitor" data-price="750" data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="240Hz Gaming Monitor" class="product-image">
+                    <div class="product-info">
+                        <h4>25" 240Hz Gaming Monitor</h4>
+                        <p class="product-description">Full HD, 240Hz Refresh Rate, 1ms Response, G-Sync Compatible. Competitive gaming monitor.</p>
+                        <p class="product-price">$350 USD</p>
+                        <button class="product-button add-to-cart" data-id="8" data-name="25\" 240Hz Gaming Monitor" data-price="350" data-image="https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -820,30 +878,42 @@
     <section id="services" class="section" style="background-color: #f8f9fa;">
         <div class="container">
             <h2 class="section-title">Our IT Services</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-info">
-                        <h4>Computer Repair & Maintenance</h4>
-                        <p class="product-description">Fast and reliable repair services for all computer hardware and software issues. We diagnose and fix problems quickly to minimize downtime.</p>
-                        <p class="product-price">Starting at $50 USD</p>
-                        <button class="product-button">Schedule Service</button>
-                    </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Computer Repair & Maintenance</h3>
+                    <p>Fast and reliable repair services for all computer hardware and software issues. We diagnose and fix problems quickly to minimize downtime.</p>
+                    <button class="product-button service-request" data-service="Computer Repair">Schedule Service</button>
                 </div>
-                <div class="product-card">
-                    <div class="product-info">
-                        <h4>IT Support & Consulting</h4>
-                        <p class="product-description">Professional IT support services for businesses of all sizes. We provide ongoing maintenance, troubleshooting, and strategic IT planning.</p>
-                        <p class="product-price">Custom Pricing</p>
-                        <button class="product-button">Get Quote</button>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>IT Support & Consulting</h3>
+                    <p>Professional IT support services for businesses of all sizes. We provide ongoing maintenance, troubleshooting, and strategic IT planning.</p>
+                    <button class="product-button service-request" data-service="IT Support">Get Quote</button>
                 </div>
-                <div class="product-card">
-                    <div class="product-info">
-                        <h4>Network Setup & Security</h4>
-                        <p class="product-description">Comprehensive network solutions including setup, configuration, and security. Protect your business from cyber threats with our expertise.</p>
-                        <p class="product-price">Starting at $200 USD</p>
-                        <button class="product-button">Learn More</button>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Network Setup & Security</h3>
+                    <p>Comprehensive network solutions including setup, configuration, and security. Protect your business from cyber threats with our expertise.</p>
+                    <button class="product-button service-request" data-service="Network Security">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Services</h3>
+                    <p>Secure and scalable cloud solutions for your business needs. We help migrate, manage, and optimize your cloud infrastructure.</p>
+                    <button class="product-button service-request" data-service="Cloud Services">Get Started</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Solutions</h3>
+                    <p>Development and support for mobile applications and devices. We create custom mobile solutions for your business needs.</p>
+                    <button class="product-button service-request" data-service="Mobile Solutions">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Business Consulting</h3>
+                    <p>Strategic IT consulting to optimize your business operations. We help you leverage technology for growth and efficiency.</p>
+                    <button class="product-button service-request" data-service="Business Consulting">Book Consultation</button>
                 </div>
             </div>
         </div>
@@ -1182,6 +1252,7 @@
         // Cart modal functionality
         cartIcon.addEventListener('click', () => {
             cartModal.style.display = 'flex';
+            updateCart();
         });
         
         cartClose.addEventListener('click', () => {
@@ -1193,6 +1264,26 @@
             if (e.target === cartModal) {
                 cartModal.style.display = 'none';
             }
+        });
+        
+        // Service request buttons
+        document.querySelectorAll('.service-request').forEach(button => {
+            button.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                document.getElementById('service').value = service.toLowerCase().replace(' ', '-');
+                
+                // Scroll to contact form
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                
+                // Highlight the service field
+                const serviceField = document.getElementById('service');
+                serviceField.style.borderColor = 'var(--secondary)';
+                setTimeout(() => {
+                    serviceField.style.borderColor = '#ddd';
+                }, 2000);
+                
+                showNotification(`${service} request initiated! Please fill out the form.`);
+            });
         });
         
         // Chat functionality
@@ -1282,7 +1373,7 @@
         // Initialize Square Payments
         async function initializeSquarePayment() {
             // Replace with your Square Application ID and Location ID
-            const payments = Square.payments('YOUR_SANDBOX_APPLICATION_ID', 'YOUR_SANDBOX_LOCATION_ID');
+            const payments = Square.payments('sandbox-sq0idb-L5L7hTv2Lwq1Fh3qo2uQxA', 'LYP2M8G3H1C2E');
             
             try {
                 const card = await payments.card();
